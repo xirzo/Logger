@@ -24,7 +24,12 @@ target_link_libraries(your_target PRIVATE logger::logger)
 #include <logger.h>
 
 int main() {
-    log_set_level(LOG_DEBUG);
-    log_info("Using installed logger!");
+    FILE *output = fopen("log.txt", "w");
+    logger_set_output_file(output);
+
+    LOG_INFO("Using installed logger!");
+
+    fclose(output);
+    return 0;
 }
 ```
