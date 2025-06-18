@@ -1,19 +1,13 @@
-#include "logger.h"
 #include <stdarg.h>
-
-void logger_set_level(LOG_LEVEL level) {
-  g_Log_level = level;
-}
+#include <stdio.h>
+#include "../include/logger.h"
 
 void logger_set_output_file(FILE *file) {
-  g_Log_output = file;
+  g_Logger_output = file;
 }
 
-void logger_log(LOG_LEVEL level, const char *file, int line, const char *format, ...) {
-  if (level > g_Log_level) {
-    return;
-  }
-  FILE *output = g_Log_level ? g_Log_output : stderr;
+void logger_log(LOGGER_LEVEL level, const char *file, int line, const char *format, ...) {
+  FILE *output = g_Logger_output ? g_Logger_output : stderr;
 
   const char *level_prefix;
 

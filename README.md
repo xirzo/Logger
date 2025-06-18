@@ -4,9 +4,9 @@
 
 ```
 mkdir build && cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
 cmake --build .
-cmake --install .
+sudo cmake --install .
 ```
 
 ## Install
@@ -25,6 +25,7 @@ target_link_libraries(your_target PRIVATE logger::logger)
 
 int main() {
     FILE *output = fopen("log.txt", "w");
+
     logger_set_output_file(output);
 
     LOG_INFO("Using installed logger!");
